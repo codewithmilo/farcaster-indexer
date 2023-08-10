@@ -1,4 +1,5 @@
 import got from 'got'
+import { start } from 'repl'
 
 import { MERKLE_REQUEST_OPTIONS } from '../merkle.js'
 import supabase from '../supabase.js'
@@ -11,8 +12,11 @@ import { breakIntoChunks } from '../utils.js'
  */
 export async function indexAllCasts(limit?: number) {
   const startTime = Date.now()
-  const allCasts = await getAllCasts()
+  console.log(startTime, 'Indexing casts...')
+  const allCasts = await getAllCasts(limit)
+  console.log('Got all casts in', (Date.now() - startTime) / 1000, 'seconds')
   const cleanedCasts = cleanCasts(allCasts)
+  console.log('Cleaned casts in', (Date.now() - startTime) / 1000, 'seconds')
 
   const formattedCasts: FlattenedCast[] = cleanedCasts.map((c) => {
     const cast: FlattenedCast = {
