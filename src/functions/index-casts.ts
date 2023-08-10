@@ -11,14 +11,14 @@ import { breakIntoChunks } from '../utils.js'
  */
 export async function indexAllCasts(limit?: number) {
   const startTime = Date.now()
-  const allCasts = await getAllCasts(limit)
+  const allCasts = await getAllCasts()
   const cleanedCasts = cleanCasts(allCasts)
 
   const formattedCasts: FlattenedCast[] = cleanedCasts.map((c) => {
     const cast: FlattenedCast = {
       hash: c.hash,
       thread_hash: c.threadHash,
-      parent_hash: c.parentHash || null,
+      parent_source: c.parentSource?.url || null,
       author_fid: c.author.fid,
       author_username: c.author.username || null,
       author_display_name: c.author.displayName,
@@ -34,13 +34,6 @@ export async function indexAllCasts(limit?: number) {
       parent_author_fid: c.parentAuthor?.fid || null,
       parent_author_username: c.parentAuthor?.username || null,
       deleted: false,
-    }
-
-    // Retain v1 hashes for backwards compatibility (remove after 3/21/2023)
-    if (c._hashV1) {
-      cast.hash_v1 = c._hashV1
-      cast.thread_hash_v1 = c._threadHashV1
-      cast.parent_hash_v1 = c._parentHashV1 || null
     }
 
     return cast

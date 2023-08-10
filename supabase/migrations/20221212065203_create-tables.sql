@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS public.casts
 (
     hash text COLLATE pg_catalog."default" NOT NULL,
     thread_hash text COLLATE pg_catalog."default" NOT NULL,
-    parent_hash text COLLATE pg_catalog."default",
+    parent_source text COLLATE pg_catalog."default",
     author_fid integer NOT NULL,
     author_username text COLLATE pg_catalog."default",
     author_display_name text COLLATE pg_catalog."default",

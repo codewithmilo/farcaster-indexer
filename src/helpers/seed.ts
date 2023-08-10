@@ -26,7 +26,9 @@ console.log('Seeding profiles from Merkle APIs...')
 await updateAllProfiles()
 
 console.log('Seeding casts from Merkle APIs...')
+const start = Date.now()
 await indexAllCasts()
+console.log('Casts seeded in', (Date.now() - start) / 1000 / 60, 'minutes')
 
 if (process.argv.includes('--verifications')) {
   console.log('Seeding verifications from Merkle APIs...')
