@@ -84,6 +84,10 @@ async function getAllCasts(limit?: number): Promise<Cast[]> {
     if (!casts) throw new Error('No casts found')
 
     for (const cast of casts) {
+      // skip top-level casts that don't have a parent
+      if (!cast.parentSource && cast.threadHash === cast.hash) {
+        continue
+      }
       allCasts.push(cast)
     }
 
