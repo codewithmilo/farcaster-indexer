@@ -88,6 +88,10 @@ async function getAllCasts(limit?: number): Promise<Cast[]> {
       if (!cast.parentSource && cast.threadHash === cast.hash) {
         continue
       }
+      // skip casts that have a parent that is not a URL
+      if (cast.parentSource && !cast.parentSource?.url?.startsWith('http')) {
+        continue
+      }
       allCasts.push(cast)
     }
 
