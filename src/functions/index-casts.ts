@@ -60,10 +60,7 @@ export async function indexAllCasts(limit?: number) {
   const endTime = Date.now()
   const duration = (endTime - startTime) / 1000
 
-  if (duration > 60) {
-    // If it takes more than 60 seconds, log the duration so we can optimize
-    console.log(`Updated ${formattedCasts.length} casts in ${duration} seconds`)
-  }
+  console.log(`Updated ${formattedCasts.length} casts in ${duration} seconds`)
 }
 
 /**
