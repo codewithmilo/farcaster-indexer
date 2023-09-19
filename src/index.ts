@@ -42,8 +42,8 @@ await upsertRegistrations(provider, idRegistry)
 
 // Run job every minute
 cron.schedule('* * * * *', async () => {
-  await indexAllCasts(10_000)
   await updateAllProfiles()
+  await indexAllCasts(10_000)
 })
 
 // Run job every hour
