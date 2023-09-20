@@ -31,7 +31,6 @@ const getIdRegistryEvents = async ({
       [
         '0x3cd6a0ffcc37406d9958e09bba79ff19d8237819eb2e1911f9edbce656499c87', // Register
         '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef', // Transfer
-        '0xf2e19a901b0748d8b08e428d0468896a039ac751ec4fec49b44b7b9c28097e45', // new register?
       ],
     ],
   })
